@@ -1,0 +1,38 @@
+{
+  "name": "PDV",
+  "version": "1.0.0",
+  "description": "Sistema PDV descktop",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "Futura Agência",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^20.1.0"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.8",
+    "@fortawesome/fontawesome-svg-core": "^6.1.2",
+    "axios": "^0.27.2",
+    "electron-alert": "^0.1.20",
+    "electron-reload": "^2.0.0-alpha.1",
+    "nedb": "^1.8.0",
+    "sqlite-electron": "^2.0.5"
+  },
+  "build": {
+    "productName": "PDV",
+    "appId": "com.pdv.desktop.application",
+    "win": {
+      "icon": "./icon.png"
+    }
+  }
+}

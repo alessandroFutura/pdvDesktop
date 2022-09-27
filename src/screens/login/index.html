@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+    <link href="./styles.css" rel="stylesheet">
+    <link href="../../fontawesome/css/all.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="ContainerLogin">
+        <div class="Header">
+          <button class="closeScreenLogin"><i class="fas fa-times"></i></button>
+        </div>
+        <img class="Logo"  src="../../asstes/logo.png" alt="logo">
+        <div class="Group">
+            <i class="fas fa-user"></i>
+            <input  type="text" name="" id="user_login" placeholder="Usuário">
+        </div>
+        <div class="Group" style="margin: 12px 0px;">
+          <i class="fas fa-lock"></i>
+            <input  type="password" name="" id="user_pass" placeholder="Senha">
+        </div>
+        <div class="Group">
+          <i class="fas fa-database"></i>
+          <select id="conn_api"></select>
+        </div>
+        <button id="button_send" class="Submit"> ACESSAR</button>
+        <img class="LogoFutura"  src="../../asstes/futura.png" alt="logo">
+        <div class="Alert">
+          <span id="mensseger"></span>
+          <button id="btnAlert">ok</button>
+        </div>
+    </div>
+  </body>
+  <script src="./login.js"></script>
+</html>
