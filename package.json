@@ -22,7 +22,7 @@
   "dependencies": {
     "@electron/remote": "^2.0.8",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
-    "axios": "^0.27.2",
+    "axios": "^1.1.2",
     "electron-alert": "^0.1.20",
     "electron-reload": "^2.0.0-alpha.1",
     "nedb": "^1.8.0",
