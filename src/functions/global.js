@@ -1,6 +1,0 @@
-
-function getConnApi(){
-    
-}
-
-export { getConnApi }

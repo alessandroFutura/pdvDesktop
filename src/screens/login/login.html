@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="Content-Security-Policy" content="script-src 'self';">
+		<link href="./login.css" rel="stylesheet">
+		<link href="../../fontawesome/css/all.css" rel="stylesheet">
+	</head>
+	<body>
+		<button id="button-about" class="button-header">
+			<i class="fas fa-question-circle"></i>
+		</button>
+		<button id="button-close" class="button-header">
+			<i class="fas fa-times"></i>
+		</button>
+		<div class="pdv-logo"></div>
+		<div id="version" class="version"></div>
+		<div class="form">
+			<div class="group">
+				<i class="fas fa-user"></i>
+				<input type="text" id="user-user" placeholder="Usuário" />
+			</div>
+			<div class="group" style="margin: 12px 0px;">
+				<i class="fas fa-lock"></i>
+				<input type="password" id="user-pass" placeholder="Senha" />
+			</div>
+			<div class="group">
+				<i class="fas fa-database"></i>
+				<select id="select-api"></select>
+			</div>
+			<button class="button-submit" id="button-submit">ACESSAR</button>
+		</div>
+		<div class="futura-logo"></div>
+		<div id="alert" class="alert">
+			<span id="alert-message"></span>
+			<button id="button-alert-close">ok</button>
+		</div>
+	</body>
+	<script src="./login.js"></script>
+</html>

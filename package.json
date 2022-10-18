@@ -1,7 +1,7 @@
 {
-  "name": "PDV",
+  "name": "Checkout",
   "version": "1.0.0",
-  "description": "Sistema PDV descktop",
+  "description": "Sistema Checkout desktop",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -25,7 +25,8 @@
     "axios": "^0.27.2",
     "electron-alert": "^0.1.20",
     "electron-reload": "^2.0.0-alpha.1",
-    "nedb": "^1.8.0",
+    "electron-store": "^8.1.0",
+    "moment": "^2.29.4",
     "sqlite-electron": "^2.0.5"
   },
   "build": {
