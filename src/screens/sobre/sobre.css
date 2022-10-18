@@ -3,7 +3,7 @@ body
     font-family: monospace;
     background-size: cover;
     background-color: #1c1c1c;
-    background-image: url(../../asstes/fundo.jpg);
+    background-image: url(../../assets/fundo.jpg);
 }
 
 button
@@ -40,7 +40,7 @@ button
     top: 40px;
     width: 168px;
     height: 94px;
-    background-image: url(../../asstes/logo.png);
+    background-image: url(../../assets/logo.png);
 }
 
 .futura-logo
@@ -48,7 +48,7 @@ button
     width: 114px;
     height: 38px;
     bottom: 20px;
-    background-image: url(../../asstes/futura.png);
+    background-image: url(../../assets/futura.png);
 }
 
 .info

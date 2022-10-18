@@ -1,10 +1,12 @@
-const {app, BrowserWindow, ipcMain} = require('electron');
+const {app, dialog, BrowserWindow, ipcMain} = require('electron');
 
 const path = require('path');
 const Store = require('electron-store');
 
 const store = new Store();
 store.set('appVersion', '1.0.0');
+
+global.closingAlreadyConfirmed = false;
 
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
@@ -24,6 +26,7 @@ function createWindow(){
 		frame: false,
         trasnparent: true,
 		autoHideMenuBar: true,
+		icon: './src/assets/favicon.ico',
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 			webSecurity: false,
@@ -39,7 +42,7 @@ function createWindow(){
 		show: false,
 		width: 1024,
 		height: 768,
-		icon: 'app/icon.ico',
+		icon: './src/assets/favicon.ico',
 		autoHideMenuBar: true,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
@@ -54,13 +57,29 @@ function createWindow(){
 
 	global.appWindow.setMenu(null);
     global.mainWindow.setMenu(null);
-    //global.mainWindow.webContents.openDevTools();
 
 	if(!!store.get('token')){
 		global.mainWindow.loadFile('./src/screens/login/login.html');
 	} else {
 		global.mainWindow.loadFile('./src/screens/cadastro/cadastro.html');
 	}
+
+	global.appWindow.on('close', e => {
+        if(!global.closingAlreadyConfirmed){
+			e.preventDefault();
+			dialog.showMessageBox({
+				type: 'question',
+				buttons: ['Sim', 'Não'],
+				title: 'Confirmação',
+				message: 'Deseja realmente fechar a aplicação?'
+			}).then(result => {
+				if(result.response == 0){
+					global.closingAlreadyConfirmed = true;
+					global.appWindow.close(); 
+				}
+			});
+		}
+    });
 }
 
 app.whenReady().then(() => {
@@ -104,7 +123,6 @@ ipcMain.on('closeAbout', () => {
 });
 
 ipcMain.on('openDevTools', (e, data) => {
-	console.log(data);
 	global[data].webContents.openDevTools();
 });
 
@@ -115,10 +133,10 @@ ipcMain.on('about', (e, data) => {
 		height: 426,
 		frame: false,
         trasnparent: true,
-		icon: 'app/icon.ico',
+		icon: './src/assets/favicon.ico',
 		autoHideMenuBar: true,
 		modal: true,
-		parent: data === 'mainWindow' ? global.mainWindow : global.appWindow,
+		parent: global[data],
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 			webSecurity: false,

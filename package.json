@@ -1,10 +1,12 @@
 {
-  "name": "Checkout",
+  "name": "checkout",
   "version": "1.0.0",
-  "description": "Sistema Checkout desktop",
+  "description": "Checkout",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,7 +19,8 @@
   "author": "Futura Agência",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^20.1.0"
+    "electron": "^20.1.0",
+    "electron-builder": "^23.6.0"
   },
   "dependencies": {
     "@electron/remote": "^2.0.8",
@@ -30,10 +33,10 @@
     "sqlite-electron": "^2.0.5"
   },
   "build": {
-    "productName": "PDV",
-    "appId": "com.pdv.desktop.application",
+    "productName": "Checkout",
+    "appId": "com.checkout.application",
     "win": {
-      "icon": "./icon.png"
+      "icon": "./src/assets/favicon.ico"
     }
   }
 }
