@@ -55,7 +55,7 @@ Login = {
             }
         });
         document.getElementById('button-alert-close').addEventListener('click', () => {
-            document.getElementById('alert')[0].classList.toggle('visible');
+            document.getElementById('alert').classList.toggle('visible');
         });         
     },
     form2data: function(){

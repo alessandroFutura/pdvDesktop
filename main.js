@@ -54,7 +54,7 @@ function createWindow(){
 
 	global.appWindow.setMenu(null);
     global.mainWindow.setMenu(null);
-    global.mainWindow.webContents.openDevTools();
+    //global.mainWindow.webContents.openDevTools();
 
 	if(!!store.get('token')){
 		global.mainWindow.loadFile('./src/screens/login/login.html');
@@ -75,7 +75,6 @@ app.on('window-all-closed', function () {
 });
 
 ipcMain.on('afterLogin', (e, data) => {
-	console.log(data);
 	global.mainWindow.close();
 	global.appWindow.show();
 	global.appWindow.maximize();
@@ -105,6 +104,7 @@ ipcMain.on('closeAbout', () => {
 });
 
 ipcMain.on('openDevTools', (e, data) => {
+	console.log(data);
 	global[data].webContents.openDevTools();
 });
 
