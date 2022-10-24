@@ -31,7 +31,7 @@ Login = {
             if(document.getElementById('alert').classList.contains('visible')){
                 document.getElementById('alert').classList.toggle('visible');
             }
-        }, 3000);
+        }, 5000);
     },
     close: function(){
         ipcRenderer.postMessage('close');
@@ -108,12 +108,11 @@ Login = {
         return null;
     },
     submit: function(){
-        axios({
-            method: "post",
-            url: `http://${Login.data.uri}/pdv/api/login.php`,
-            data: Login.data,
-            responseType: "stream",
-        }).then(function(response){
+        axios.post(
+            `http://${Login.data.uri}/pdv/api/login.php`,
+            Login.data,
+            {headers: {'x-token': Login.data.token}}
+        ).then(function(response){
             store.set('nmUltimoLogin', Login.data.user_user);
             ipcRenderer.postMessage("afterLogin", {
                 //uri: Login.data.uri,
@@ -125,6 +124,11 @@ Login = {
                 }
             }, [port1]);
         }).catch(function(response){
+            if(response.response.status == 401){
+                setTimeout(() => {
+                    ipcRenderer.postMessage('Unauthorized', 'mainWindow');
+                }, 5000)
+            }
             Login.alert(response.response.data.message || response.response.statusText);
         });
     },

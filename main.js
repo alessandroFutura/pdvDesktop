@@ -4,7 +4,7 @@ const path = require('path');
 const Store = require('electron-store');
 
 const store = new Store();
-store.set('appVersion', '1.0.0');
+store.set('appVersion', app.getVersion());
 
 global.closingAlreadyConfirmed = false;
 
@@ -57,6 +57,7 @@ function createWindow(){
 
 	global.appWindow.setMenu(null);
     global.mainWindow.setMenu(null);
+    //global.mainWindow.webContents.openDevTools();
 
 	if(!!store.get('token')){
 		global.mainWindow.loadFile('./src/screens/login/login.html');
@@ -124,6 +125,14 @@ ipcMain.on('closeAbout', () => {
 
 ipcMain.on('openDevTools', (e, data) => {
 	global[data].webContents.openDevTools();
+});
+
+ipcMain.on('Unauthorized', (e, data) => {
+	global.closingAlreadyConfirmed = true;
+	global[data].close();
+	cleanStorage();
+	createWindow();
+	global.closingAlreadyConfirmed = false;
 });
 
 ipcMain.on('about', (e, data) => {

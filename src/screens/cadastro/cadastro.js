@@ -32,7 +32,7 @@ Cadastro = {
             if(document.getElementById('alert').classList.contains('visible')){
                 document.getElementById('alert').classList.toggle('visible');
             }
-        }, 3000);
+        }, 5000);
     },
     close: function(){
         ipcRenderer.postMessage('close');
