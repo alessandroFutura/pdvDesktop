@@ -57,7 +57,7 @@ function createWindow(){
 
 	global.appWindow.setMenu(null);
     global.mainWindow.setMenu(null);
-    //global.mainWindow.webContents.openDevTools();
+    global.mainWindow.webContents.openDevTools();
 
 	if(!!store.get('token')){
 		global.mainWindow.loadFile('./src/screens/login/login.html');
@@ -102,7 +102,9 @@ ipcMain.on('afterLogin', (e, data) => {
 });
 
 ipcMain.on('afterLogout', () => {
+	global.closingAlreadyConfirmed = true;
 	global.appWindow.close();
+	global.closingAlreadyConfirmed = false;
 	createWindow();
 });
 
