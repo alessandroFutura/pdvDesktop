@@ -19,7 +19,7 @@
   "author": "Futura Agência",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^20.1.0",
+    "electron": "^21.2.2",
     "electron-builder": "^23.6.0"
   },
   "dependencies": {
