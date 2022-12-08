@@ -70,7 +70,7 @@ Login = {
             let select = document.getElementById('select-api');
             res.forEach((data) => {
                 let opt = document.createElement('option');
-                opt.value = data.ip;
+                opt.value = 'localhost';//data.ip;
                 opt.textContent += data.name;
                 opt.selected = data.default == 'Y';
                 select.appendChild(opt);
