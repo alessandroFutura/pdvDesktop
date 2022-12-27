@@ -70,9 +70,9 @@ Login = {
             let select = document.getElementById('select-api');
             res.forEach((data) => {
                 let opt = document.createElement('option');
-                opt.value = 'localhost';//data.ip;
+                opt.value = data.ip;
                 opt.textContent += data.name;
-                opt.selected = data.default == 'Y';
+                opt.selected = data.default === 'Y';
                 select.appendChild(opt);
             });
         });
@@ -115,8 +115,7 @@ Login = {
         ).then(function(response){
             store.set('nmUltimoLogin', Login.data.user_user);
             ipcRenderer.postMessage("afterLogin", {
-                //uri: Login.data.uri,
-                uri: 'localhost:3000',
+                uri: Login.data.uri,
                 params: {
                     token: Login.data.token,
                     user_id: response.data.user_id,

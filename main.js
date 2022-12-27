@@ -150,6 +150,7 @@ ipcMain.on('afterLogin', (e, data) => {
 	global.appWindow.show();
 	global.appWindow.maximize();
 	global.appWindow.loadURL(`http://${data.uri}/pdv/?` + new URLSearchParams(data.params).toString());
+	global.appWindow.webContents.openDevTools();
 });
 
 ipcMain.on('print', (e, data) => {

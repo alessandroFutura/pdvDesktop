@@ -71,7 +71,7 @@ Cadastro = {
                 let opt = document.createElement('option');
                 opt.value = data.ip;
                 opt.textContent += data.name;
-                opt.selected = data.default == 'Y';
+                opt.selected = data.default === 'Y';
                 select.appendChild(opt);
             });
         });
