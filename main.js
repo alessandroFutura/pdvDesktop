@@ -6,6 +6,7 @@ const Store = require('electron-store');
 const store = new Store();
 store.set('appVersion', app.getVersion());
 
+global.closingAlreadySubmited = false;
 global.closingAlreadyConfirmed = false;
 process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1';
 
@@ -56,7 +57,7 @@ function createWindow(){
 	});
 
 	global.appWindow.setMenu(null);
-    global.mainWindow.setMenu(null);	
+    global.mainWindow.setMenu(null);
 
 	if(!!store.get('token')){
 		global.mainWindow.loadFile('./src/screens/login/login.html');
@@ -74,12 +75,19 @@ function createWindow(){
 				message: 'Deseja realmente fechar a aplicação?'
 			}).then(result => {
 				if(result.response == 0){
-					global.closingAlreadyConfirmed = true;
-					global.appWindow.close(); 
+					if(!global.closingAlreadySubmited){
+						global.appWindow.send('removeInstanceBeforeClose');		
+					} else {
+						global.closingAlreadyConfirmed = true;
+						global.appWindow.close();
+					}
 				}
 			});
+		} else if(!global.closingAlreadySubmited){
+			e.preventDefault();
+			global.appWindow.send('removeInstanceBeforeClose');		
 		}
-    });
+    });	
 }
 
 function print(printAfter, data){
@@ -151,6 +159,12 @@ ipcMain.on('afterLogin', (e, data) => {
 	global.appWindow.maximize();
 	global.appWindow.loadURL(`http://${data.uri}/pdv/?` + new URLSearchParams(data.params).toString());
 	global.appWindow.webContents.openDevTools();
+});
+
+ipcMain.on('closeAfterRemoveInstance', (e) => {
+	global.closingAlreadySubmited = true;
+	global.closingAlreadyConfirmed = true;
+	global.appWindow.close();
 });
 
 ipcMain.on('print', (e, data) => {
