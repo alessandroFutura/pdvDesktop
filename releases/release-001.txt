@@ -1,0 +1,6 @@
+1.2.0
+
+RECURSOS
+
+- Limpar dados para uma possível reinstalação
+- Tratamento para remoção da instancia antes do fechamento do aplicativo

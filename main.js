@@ -158,7 +158,6 @@ ipcMain.on('afterLogin', (e, data) => {
 	global.appWindow.show();
 	global.appWindow.maximize();
 	global.appWindow.loadURL(`http://${data.uri}/pdv/?` + new URLSearchParams(data.params).toString());
-	global.appWindow.webContents.openDevTools();
 });
 
 ipcMain.on('closeAfterRemoveInstance', (e) => {
@@ -172,8 +171,10 @@ ipcMain.on('print', (e, data) => {
 });
 
 ipcMain.on('afterLogout', () => {
+	global.closingAlreadySubmited = true;
 	global.closingAlreadyConfirmed = true;
 	global.appWindow.close();
+	global.closingAlreadySubmited = false;
 	global.closingAlreadyConfirmed = false;
 	createWindow();
 });
