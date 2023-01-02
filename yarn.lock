@@ -1756,10 +1756,10 @@ sprintf-js@^1.1.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.1.2.tgz#da1765262bf8c0f571749f2ad6c26300207ae673"
   integrity sha512-VE0SOVEHCk7Qc8ulkWw3ntAzXuqf7S2lvwQaDLRnUeIEaKNQJzV6BwmLKhOqT61aGhfUMrXeaBk+oDGCzvhcug==
 
-sqlite-electron@^2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/sqlite-electron/-/sqlite-electron-2.0.5.tgz#0e07dae8f9133fef02a1c071ef0ccaabc74857e7"
-  integrity sha512-R/A/9CW5RJQvcK1/hIDcN79wMo7mjZoNhINPy1WHYB3C03NB/22msFmL5NWvFmgMJYUF9IAg4YcRpuyivqGi7g==
+sqlite-electron@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/sqlite-electron/-/sqlite-electron-2.2.5.tgz#a70c011131a7d316928e945812e28b79fc8d1569"
+  integrity sha512-+YmqQ7RNXYu11DoM/uaRQQfuCodyqRVAbj+8TJcLSlLyd8iQ6Gu0ib9L937SYLryFxBlgAu7ro5sp8w12+yekQ==
 
 stat-mode@^1.0.0:
   version "1.0.0"
