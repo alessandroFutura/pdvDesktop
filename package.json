@@ -23,7 +23,7 @@
     "electron-builder": "^23.6.0"
   },
   "dependencies": {
-    "@electron/remote": "^2.0.8",
+    "@electron/remote": "^2.0.9",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "axios": "^0.27.2",
     "electron-alert": "^0.1.20",
